@@ -32,9 +32,18 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install Playwright browsers
+    - name: Setup Playwright (install deps & browsers)
+      uses: microsoft/playwright-github-action@v1
+      with:
+        # instalar chromium; usa 'all' si necesitas firefox/webkit también
+        browsers: chromium
+        install-deps: true
+
+    - name: Show environment info (debug)
       run: |
-        python -m playwright install --with-deps
+        python --version
+        pip --version
+        pip list --format=columns
 
     - name: Run tests
       env:
@@ -42,10 +51,18 @@ jobs:
         HEADLESS: true
       run: |
         mkdir -p report
-        pytest -q --html=report/report.html --self-contained-html
+        pytest -vv --maxfail=1 --html=report/report.html --self-contained-html
 
     - name: Upload test report
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: pytest-report
         path: report/report.html
+
+    - name: Upload pytest log
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-log
+        path: report
