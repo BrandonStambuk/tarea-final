@@ -1,0 +1,14 @@
+[
+  {
+    "title": "QA Engineer",
+    "description": "Responsible for QA tasks",
+    "note": "No special notes",
+    "valid": false
+  },
+  {
+    "title": "Automation Tester",
+    "description": "Works on test automation",
+    "note": "Use Selenium/Playwright",
+    "valid": true
+  }
+]
