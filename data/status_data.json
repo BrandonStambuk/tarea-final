@@ -1,0 +1,5 @@
+[
+  { "name": "Full-Time", "description": "Empleado tiempo completo" },
+  { "name": "Part-Time", "description": "Empleado medio tiempo" },
+  { "name": "Intern", "description": "Pasantía" }
+]
