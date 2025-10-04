@@ -2,3 +2,6 @@ pytest
 pytest-playwright
 playwright
 python-dotenv
+pytest-html
+faker
+
